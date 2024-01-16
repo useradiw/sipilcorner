@@ -3,6 +3,7 @@ import { Providers } from "@/components/providers";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeSwitch from "@/components/themeswitch";
+import Navbar from "@/components/display/navbar";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,11 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-slate-100 dark:bg-slate-950 p-1`}>
+      <body className={`${inter.className} bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-200 p-1`}>
         <Providers>
           <div className="flex flex-row gap-1">
             <section className="basis-1/6"></section>
             <section className="basis-4/6 border border-red-500">
+              <Navbar />
               {children}
             </section>
             <section className="basis-1/6">
