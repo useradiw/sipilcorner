@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeSwitch from "@/components/themeswitch";
 import Navbar from "@/components/display/navbar";
+import SearchBar from "@/components/display/search";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
             <section className="basis-1/6"></section>
             <section className="basis-4/6 border border-red-500">
               <Navbar />
+              <SearchBar />
               {children}
             </section>
             <section className="basis-1/6">
