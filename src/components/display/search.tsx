@@ -1,11 +1,11 @@
 const SearchBar = () => {
     return (
         <>
-            <section className="w-full">
+            <section className="w-full my-2">
                 <div>
-                    <search className="w-[50%] mx-auto border-2 rounded-full">
-                        <input type="search" name="searchbar" id="searchbar" disabled />
-                        <button type="submit" disabled>Search</button>
+                    <search className="w-[50%] mx-auto border-2 border-slate-600 rounded-full flex flex-row gap-1 overflow-hidden">
+                        <input type="search" name="searchbar" id="searchbar" className="basis-5/6" disabled />
+                        <button type="submit" className="basis-1/6" disabled>Search</button>
                     </search>
                 </div>
             </section>
@@ -13,4 +13,4 @@ const SearchBar = () => {
     )
 };
 
-export default SearchBar;
+export default SearchBar

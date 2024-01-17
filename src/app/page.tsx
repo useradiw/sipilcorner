@@ -1,5 +1,7 @@
+import Hero from "@/components/display/hero";
+
 export default function Home() {
   return (
-    <div>Coming Soon!</div>
+    <Hero />
   )
 }
