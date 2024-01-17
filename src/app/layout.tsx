@@ -24,7 +24,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex flex-row gap-1">
             <section className="basis-1/6"></section>
-            <section className="basis-4/6 border border-red-500">
+            <section className="basis-4/6">
               <Navbar />
               <SearchBar />
               {children}
