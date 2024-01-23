@@ -15,18 +15,18 @@ export default function Home() {
   
   if (isError) <div>Error: ${error.message}</div>;
 
-  console.log(data);
-
   return (
     <>
-      <Hero imageSrc={data?.body[0].cover.external.url} title={data?.body[0].properties.Title.title[0].text.content}/>
       {data? 
-        data?.body.map((item: any, i: number) => {
+        <Hero imageSrc={data?.body[0].cover.external.url} title={data?.body[0].properties.Title.title[0].text.content}/>
+      : <Hero />}
+      {data? 
+        data?.body.slice(1).map((item: any, i: number) => {
           return (
               <Card key={i} title={item.properties.Title.title[0].text.content} imageSrc={item.cover.external.url}/>
           )
         })
-      : null}
+      : <Card />}
     </>
   )
 }
