@@ -1,4 +1,4 @@
-import Content from "@/components/display/content";
+import Content from "@/components/homepage/content";
 
 const blogPost = ({params}: {params: {slug: string}}) => {
     const pageid = params.slug;

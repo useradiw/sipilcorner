@@ -26,7 +26,7 @@ const Text = ({ title }: Props) => {
 const Display = ({ imageSrc, title }: Props) => {
     return (
         <>
-            <div className="relative">
+            <div className="relative cursor-pointer">
                 {imageSrc ? 
                     <div>
                         <Image
@@ -46,9 +46,9 @@ const Display = ({ imageSrc, title }: Props) => {
                 :
                     <div>
                         <Image 
-                            src="https://placehold.co/800"
+                            src="https://placehold.co/800.png?text=Loading"
                             alt="Loading Background"
-                            width={1000}
+                            width={800}
                             height={200}
                             style={{
                                 aspectRatio: 16/9

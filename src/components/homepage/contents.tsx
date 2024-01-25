@@ -26,10 +26,12 @@ const Contents = () => {
         )
     }
 
+    console.log(data)
+
     return (
         <>
             {data? 
-                <Hero imageSrc={data?.body[0].cover.external.url} title={data?.body[0].properties.Title.title[0].text.content} />
+                <Hero imageSrc={data?.body[0].cover.external.url} title={data?.body[0].properties.Title.title[0].text.content} link={`blogs/${data?.body[0].id}`} />
             : <Hero />}
             {data? 
                 data?.body.slice(1).map((item: any, i: number) => {
