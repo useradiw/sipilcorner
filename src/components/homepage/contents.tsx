@@ -26,8 +26,6 @@ const Contents = () => {
         )
     }
 
-    console.log(data)
-
     return (
         <>
             {data? 

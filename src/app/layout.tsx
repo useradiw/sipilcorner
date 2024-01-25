@@ -3,9 +3,9 @@ import { Providers } from "@/components/providers";
 import QueryProvider from "@/components/queryclient";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ThemeSwitch from "@/components/themeswitch";
 import Navbar from "@/components/display/navbar";
 import SearchBar from "@/components/display/search";
+import Switch from "@/components/controlpanel/switch";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -32,7 +32,6 @@ export default function RootLayout({
                 {children}
               </section>
               <section className="basis-1/6">
-                <ThemeSwitch />
               </section>
             </div>
           </Providers>
