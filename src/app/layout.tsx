@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-200 p-1`}>
+      <body className={`${inter.className} bg-slate-200 text-slate-900 dark:bg-slate-900 dark:text-slate-100 p-1`}>
         <QueryProvider>
           <Providers>
             <div className="flex flex-row gap-1">
