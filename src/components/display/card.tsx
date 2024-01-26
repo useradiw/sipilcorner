@@ -24,7 +24,7 @@ const Card = (props: Props) => {
                                 style={{
                                     aspectRatio: 16/9
                                 }}
-                                className="hover:rounded-md"
+                                className="hover:rounded-md border-2 border-slate-900 dark:border-slate-300"
                             />
                         :
                             <div className="w-52 bg-slate-600 rounded-md h-full text-center">No Image</div>

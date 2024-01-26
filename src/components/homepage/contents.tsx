@@ -34,7 +34,7 @@ const Contents = () => {
                 {data? 
                     data?.body.slice(1).map((item: any, i: number) => {
                     return (
-                        <Card key={i} title={item.properties.Title.title[0].text.content} imageSrc={item.cover.external.url} />
+                        <Card key={i} title={item.properties.Title.title[0].text.content} imageSrc={item.cover.external.url} link={`blogs/${item.id}`} />
                     )
                     })
                 : <Card />}
