@@ -27,8 +27,6 @@ const ThemeSwitch = () => {
     }
   };
 
-  console.log("themeswitch", theme)
-
   return (
     <Switch icon1={lightsun} icon2={darksun} onClick={handleClick} state={theme as string}/>
   )

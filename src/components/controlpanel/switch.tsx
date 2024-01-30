@@ -9,7 +9,6 @@ interface Props {
 
 const Switch = (props: Props) => {
     const { icon1, icon2, onClick, state } = props;
-    console.log("switch",state)
     return (
         <div className="cursor-pointer m-1" onClick={onClick}>
             {state === "dark" ? 
