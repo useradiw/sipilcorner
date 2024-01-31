@@ -40,7 +40,7 @@ const Content = async ({pageid}: pageProps) => {
                     />
                 </div>
                 <blockquote className="text-xl font-semibold my-5 px-8 border-x border-slate-900/20 dark:border-slate-100/20">{head.highlight}</blockquote>
-                <div className="my-5 pt-5 prose text-lg">
+                <div className="my-5 pt-5 text-lg prose prose-p:text-slate-900 dark:prose-p:text-slate-100 prose-strong:text-slate-900 dark:prose-strong:text-slate-100">
                     <Markdown remarkPlugins={[remarkGfm, html, emoji]}>{res.body}</Markdown>
                 </div>
                 <Backbtn />

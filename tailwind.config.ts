@@ -4,6 +4,6 @@ const config: Config = {
   darkMode: "class",
   content: ["./src/**/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {},
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;
