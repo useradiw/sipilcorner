@@ -5,13 +5,21 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Lightleftarrow from "@/assets/images/lightleftarrow.svg";
 import Leftarrow from "@/assets/images/leftarrow.svg";
+import { useState, useEffect } from "react";
 
 const Backbtn = () => {
+    const [mounted, setMounted] = useState<boolean>(false);
+    const { theme } = useTheme();
     const router = useRouter();
+    useEffect(() => {
+        setMounted(true)
+    }, []);
+    if (!mounted) {
+        return null
+    };
     const handleclick = () => {
         router.back()
     };
-    const { theme } = useTheme();
 
     return (
         <section className="flex flex-row justify-center">

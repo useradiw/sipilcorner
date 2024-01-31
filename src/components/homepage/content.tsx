@@ -5,6 +5,7 @@ import Markdown from "react-markdown";
 import Image from "next/image";
 import Tags from "@/components/tags";
 import Backbtn from "../control/backbtn";
+import Upbutton from "../control/topscroll";
 
 interface pageProps {
     pageid: string,
@@ -40,10 +41,11 @@ const Content = async ({pageid}: pageProps) => {
                     />
                 </div>
                 <blockquote className="text-xl font-semibold my-5 px-8 border-x border-slate-900/20 dark:border-slate-100/20">{head.highlight}</blockquote>
-                <div className="my-5 pt-5 text-lg prose prose-p:text-slate-900 dark:prose-p:text-slate-100 prose-strong:text-slate-900 dark:prose-strong:text-slate-100">
+                <div className="my-5 pt-5 text-lg prose dark:prose-invert dark:prose-headings:text-slate-100 dark:prose-p:text-slate-100 dark:prose-strong:text-slate-100 dark:prose-li:text-slate-100">
                     <Markdown remarkPlugins={[remarkGfm, html, emoji]}>{res.body}</Markdown>
                 </div>
                 <Backbtn />
+                <Upbutton />
             </section>
         </>
     )
