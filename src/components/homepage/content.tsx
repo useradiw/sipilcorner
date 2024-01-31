@@ -4,6 +4,7 @@ import emoji from "remark-emoji";
 import Markdown from "react-markdown";
 import Image from "next/image";
 import Tags from "@/components/tags";
+import Backbtn from "../control/backbtn";
 
 interface pageProps {
     pageid: string,
@@ -25,6 +26,7 @@ const Content = async ({pageid}: pageProps) => {
                         )}
                     </div>
                 </section>
+                <Backbtn />
                 <div className="my-5">
                     <Image 
                         src={head.cover}
@@ -41,6 +43,7 @@ const Content = async ({pageid}: pageProps) => {
                 <div className="my-5 pt-5 prose text-lg">
                     <Markdown remarkPlugins={[remarkGfm, html, emoji]}>{res.body}</Markdown>
                 </div>
+                <Backbtn />
             </section>
         </>
     )

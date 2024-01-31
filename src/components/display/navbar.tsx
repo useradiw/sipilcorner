@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Control from "../controlpanel";
+import Control from "../control";
 
 const home = process.env.PUBLIC_BASE as string;
 

@@ -2,9 +2,7 @@ import ThemeSwitch from "./themeswitch";
 
 const Control = () => {
     return (
-        <>
-            <ThemeSwitch />
-        </>
+        <ThemeSwitch />
     )
 };
 
