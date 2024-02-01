@@ -11,7 +11,7 @@ interface pageProps {
     pageid: string,
 }
 const Content = async ({pageid}: pageProps) => {
-    const req = await fetch(`http://localhost:3000/notion/pages/${pageid}`, {cache: "no-store"});
+    const req = await fetch(`/notion/pages/${pageid}`, {cache: "no-store"});
     const res = await req.json();
     const head = res.head;
     return (
