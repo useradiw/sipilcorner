@@ -10,8 +10,11 @@ import Upbutton from "../control/topscroll";
 interface pageProps {
     pageid: string,
 }
+
+const path = process.env.PUBLIC_BASE;
+
 const Content = async ({pageid}: pageProps) => {
-    const req = await fetch(`/notion/pages/${pageid}`, {cache: "no-store"});
+    const req = await fetch(`${path}/notion/pages/${pageid}`, {cache: "no-store"});
     const res = await req.json();
     const head = res.head;
     return (

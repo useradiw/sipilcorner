@@ -3,4 +3,7 @@ export const getPosts = async () => {
     return await res.json();
 };
 
-// export const getPost = async () => {};
+// export const getPost = async ({pageid}: any) => {
+//     const res = await fetch(`/notion/pages/${pageid}`);
+//     return await res.json();
+// };
