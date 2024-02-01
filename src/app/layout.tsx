@@ -4,7 +4,7 @@ import QueryProvider from "@/components/queryclient";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/display/navbar";
-import SearchBar from "@/components/display/search";
+// import SearchBar from "@/components/display/search";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,14 +24,13 @@ export default function RootLayout({
         <QueryProvider>
           <Providers>
             <div className="flex flex-row gap-1">
-              <section className="basis-1/6"></section>
-              <section className="basis-4/6">
+              <section className="md:basis-1/6 hidden md:block"></section>
+              <section className="md:basis-4/6 mx-auto">
                 <Navbar />
-                <SearchBar />
+                {/* <SearchBar /> */}
                 {children}
               </section>
-              <section className="basis-1/6">
-              </section>
+              <section className="md:basis-1/6 hidden md:block"></section>
             </div>
           </Providers>
         </QueryProvider>

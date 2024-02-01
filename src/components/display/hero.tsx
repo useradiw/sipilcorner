@@ -39,14 +39,14 @@ const Display = ({ imageSrc, title }: Props) => {
                             }}
                             className="rounded-md"
                         />
-                        <div className="absolute bottom-0 p-4 font-semibold bg-slate-50/10 w-full text-2xl">
+                        <div className="absolute bottom-0 p-1 sm:p-4 font-semibold bg-gradient-to-t from-slate-200/50 to-slate-200/20 dark:from-slate-800 dark:to-slate-800/10 rounded-b-md w-full text-lg sm:text-2xl">
                             <Text title={title}/>
                         </div>
                     </div>
                 :
                     <div>
                         <div className="w-full min-h-[25svh] bg-slate-600 rounded-md"></div>
-                        <div className="absolute bottom-0 p-4 font-semibold bg-slate-50/10 w-full text-2xl">
+                        <div className="absolute bottom-0 p-1 sm:p-4 font-semibold bg-gradient-to-t from-slate-200/50 to-slate-200/20 dark:from-slate-800 dark:to-slate-800/10 rounded-b-md w-full text-lg sm:text-2xl">
                             <Text title={title}/>
                         </div>
                     </div>
