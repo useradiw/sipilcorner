@@ -24,13 +24,13 @@ export default function RootLayout({
         <QueryProvider>
           <Providers>
             <div className="flex flex-row gap-1">
-              <section className="md:basis-1/6 hidden md:block"></section>
-              <section className="md:basis-4/6 mx-auto">
+              <section className="md:basis-1/6 xl:basis-1/4 hidden md:block"></section>
+              <section className="md:basis-4/6 xl:basis-2/4 mx-auto">
                 <Navbar />
                 {/* <SearchBar /> */}
                 {children}
               </section>
-              <section className="md:basis-1/6 hidden md:block"></section>
+              <section className="md:basis-1/6 xl:basis-1/4 hidden md:block"></section>
             </div>
           </Providers>
         </QueryProvider>

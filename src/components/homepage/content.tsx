@@ -1,3 +1,7 @@
+"use client"
+
+import { useQuery } from "@tanstack/react-query";
+import { getPost } from "@/lib/notion-helper";
 import html from "remark-html";
 import remarkGfm from "remark-gfm";
 import emoji from "remark-emoji";
@@ -10,10 +14,29 @@ import Upbutton from "../control/topscroll";
 interface pageProps {
     pageid: string,
 }
-const Content = async ({pageid}: pageProps) => {
-    const req = await fetch(`/notion/pages/${pageid}`, {cache: "no-store"});
-    const res = await req.json();
-    const head = res.head;
+
+const Content = ({ pageid }: pageProps) => {
+    const { isLoading, isError, data, error } = useQuery({
+        queryKey: ["posts", pageid],
+        queryFn: getPost,
+    })
+
+    if (isLoading) {
+        return (
+            <>
+                <div className="w-full bg-slate-600 rounded-md min-h-[45svh] animate-pulse"></div>
+            </>
+        )
+    }
+
+    if (isError) {
+        return (
+            <div>Error: {error.message}</div>
+        )
+    }
+
+    const head = data.head;
+    console.log(data)
     return (
         <>
             <section className="mb-8">
@@ -42,7 +65,7 @@ const Content = async ({pageid}: pageProps) => {
                 </div>
                 <blockquote className="text-xl font-semibold my-5 px-8 border-x border-slate-900/20 dark:border-slate-100/20">{head.highlight}</blockquote>
                 <div className="my-5 pt-5 text-lg prose dark:prose-invert dark:prose-headings:text-slate-100 dark:prose-p:text-slate-100 dark:prose-strong:text-slate-100 dark:prose-li:text-slate-100">
-                    <Markdown remarkPlugins={[remarkGfm, html, emoji]}>{res.body}</Markdown>
+                    <Markdown remarkPlugins={[remarkGfm, html, emoji]}>{data.body}</Markdown>
                 </div>
                 <Backbtn />
                 <Upbutton />
