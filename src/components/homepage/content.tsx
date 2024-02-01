@@ -36,7 +36,7 @@ const Content = ({ pageid }: pageProps) => {
     }
 
     const head = data.head;
-    console.log(data)
+
     return (
         <>
             <section className="mb-8">
