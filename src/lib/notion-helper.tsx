@@ -3,7 +3,8 @@ export const getPosts = async () => {
     return await res.json();
 };
 
-// export const getPost = async ({pageid}: any) => {
-//     const res = await fetch(`/notion/pages/${pageid}`);
-//     return await res.json();
-// };
+export const getPost = async ({ queryKey }: any) => {
+    const [ _, pageid ] = queryKey;
+    const res = await fetch(`/notion/pages/${pageid}`);
+    return await res.json();
+};
