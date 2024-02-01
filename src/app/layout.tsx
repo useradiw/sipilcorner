@@ -3,7 +3,6 @@ import { Providers } from "@/components/providers";
 import QueryProvider from "@/components/queryclient";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ThemeSwitch from "@/components/themeswitch";
 import Navbar from "@/components/display/navbar";
 import SearchBar from "@/components/display/search";
 
@@ -21,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-200 p-1`}>
+      <body className={`${inter.className} bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-slate-100 p-1`}>
         <QueryProvider>
           <Providers>
             <div className="flex flex-row gap-1">
@@ -32,7 +31,6 @@ export default function RootLayout({
                 {children}
               </section>
               <section className="basis-1/6">
-                <ThemeSwitch />
               </section>
             </div>
           </Providers>

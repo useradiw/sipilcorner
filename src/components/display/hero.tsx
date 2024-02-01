@@ -39,23 +39,14 @@ const Display = ({ imageSrc, title }: Props) => {
                             }}
                             className="rounded-md"
                         />
-                        <div className="absolute bottom-0 p-4 font-semibold bg-slate-50/10 w-full text-lg">
+                        <div className="absolute bottom-0 p-4 font-semibold bg-slate-50/10 w-full text-2xl">
                             <Text title={title}/>
                         </div>
                     </div>
                 :
                     <div>
-                        <Image 
-                            src="https://placehold.co/800.png?text=Loading"
-                            alt="Loading Background"
-                            width={800}
-                            height={200}
-                            style={{
-                                aspectRatio: 16/9
-                            }}
-                            className="rounded-md"
-                        />
-                        <div className="absolute bottom-0 p-4 font-semibold bg-slate-50/10 w-full text-lg">
+                        <div className="w-full min-h-[25svh] bg-slate-600 rounded-md"></div>
+                        <div className="absolute bottom-0 p-4 font-semibold bg-slate-50/10 w-full text-2xl">
                             <Text title={title}/>
                         </div>
                     </div>

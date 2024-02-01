@@ -4,6 +4,8 @@ import emoji from "remark-emoji";
 import Markdown from "react-markdown";
 import Image from "next/image";
 import Tags from "@/components/tags";
+import Backbtn from "../control/backbtn";
+import Upbutton from "../control/topscroll";
 
 interface pageProps {
     pageid: string,
@@ -14,31 +16,36 @@ const Content = async ({pageid}: pageProps) => {
     const head = res.head;
     return (
         <>
-            <section className="bg-slate-100/70 mb-8">
-                <div>
+            <section className="mb-8">
+                <h1 className="text-4xl font-extrabold text-center my-5">{head.title}</h1>
+                <section className="flex flex-col gap-1 mt-2 mb-5">
+                    <h5 className="text-center font-semibold">{head.author}</h5>
+                    <h5 className="text-center text-sm">{head.created}</h5>
+                    <div className="flex flex-row gap-2 justify-center items-center text-sm">
+                        {head.tags.map((item: string, i: number) => 
+                            <Tags key={i} text={item} />
+                        )}
+                    </div>
+                </section>
+                <Backbtn />
+                <div className="my-5">
                     <Image 
                         src={head.cover}
                         alt="Cover Image"
-                        width={400}
-                        height={400}
+                        width={1000}
+                        height={200}
                         style={{
-                            aspectRatio: "16:9",
+                            aspectRatio: 16/9
                         }}
                         className="object-scale-down w-full"
                     />
                 </div>
-                <h1 className="text-5xl text-slate-900 font-extrabold text-center mt-2">{head.title}</h1>
-                <div className="flex flex-row gap-2 mt-2 justify-center items-center">
-                    {head.tags.map((item: string, i: number) => 
-                        <Tags key={i} text={item} />
-                    )}
-                </div>
-                <h2 className="font-semibold text-lg mt-2">{head.highlight}</h2>
-                <h5 className="text-center font-semibold mt-2">{head.author}</h5>
-                <h5 className="text-center mt-2 text-sm text-slate-700">{head.created}</h5>
-                <div className="mt-4 prose">
+                <blockquote className="text-xl font-semibold my-5 px-8 border-x border-slate-900/20 dark:border-slate-100/20">{head.highlight}</blockquote>
+                <div className="my-5 pt-5 text-lg prose dark:prose-invert dark:prose-headings:text-slate-100 dark:prose-p:text-slate-100 dark:prose-strong:text-slate-100 dark:prose-li:text-slate-100">
                     <Markdown remarkPlugins={[remarkGfm, html, emoji]}>{res.body}</Markdown>
                 </div>
+                <Backbtn />
+                <Upbutton />
             </section>
         </>
     )
