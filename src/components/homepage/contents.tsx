@@ -30,7 +30,7 @@ const Contents = () => {
             {data? 
                 <Hero imageSrc={data?.body[0].cover.external.url} title={data?.body[0].properties.Title.title[0].text.content} link={`blogs/${data?.body[0].id}`} />
             : <Hero />}
-            <div className="grid grid-cols-2 gap-4 w-full my-4">
+            <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full my-4">
                 {data? 
                     data?.body.slice(1).map((item: any, i: number) => {
                     return (
