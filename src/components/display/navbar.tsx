@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Control from "../control";
+import { SearchLink } from "../search";
 
 const Navbar = () => {
     return (
@@ -8,6 +9,9 @@ const Navbar = () => {
                 <nav className="flex flex-row justify-between items-end">
                     <div className="font-bold text-2xl">
                         <Link href="/">Sipil Corner</Link>
+                    </div>
+                    <div>
+                        <SearchLink />
                     </div>
                     <div>
                         <Control />

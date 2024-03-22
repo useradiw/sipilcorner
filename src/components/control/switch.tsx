@@ -5,25 +5,26 @@ interface Props {
     icon2: string,
     onClick: () => void,
     state: string,
+    size: number,
 }
 
 const Switch = (props: Props) => {
-    const { icon1, icon2, onClick, state } = props;
+    const { icon1, icon2, onClick, state, size } = props;
     return (
         <div className="cursor-pointer m-1" onClick={onClick}>
             {state === "dark" ? 
                 <Image 
                     src={icon1}
                     alt="Light Mode Images"
-                    width={32}
-                    height={32}
+                    width={size}
+                    height={size}
                 />
             : 
                 <Image 
                     src={icon2}
                     alt="Dark Mode Images"
-                    width={32}
-                    height={32}
+                    width={size}
+                    height={size}
                 />
             }
         </div>
