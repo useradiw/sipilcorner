@@ -11,7 +11,7 @@ interface Props {
 const Switch = (props: Props) => {
     const { icon1, icon2, onClick, state, size } = props;
     return (
-        <div className="cursor-pointer m-1" onClick={onClick}>
+        <div className="cursor-pointer m-1 flex align-baseline" onClick={onClick}>
             {state === "dark" ? 
                 <Image 
                     src={icon1}

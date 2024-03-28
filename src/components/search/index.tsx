@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import Switch from "@/components/control/switch";
 import LightSearch from "@/assets/images/lightsearch.svg";
@@ -33,8 +33,22 @@ const SearchLink = () => {
 };
 
 const SearchBar = () => {
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const { replace } = useRouter();
+    const handleChange = (value: string) => {
+        const params = new URLSearchParams(searchParams);
+        if (value) {
+            params.set("query", value);
+        } else {
+            params.delete("query");
+        }
+        replace(`${pathname}?${params.toString()}`)
+    };
     return (
-        <></>
+        <div className="w-[90%] mx-auto">
+            <input className="peer block w-full rounded-3xl border border-slate-400 py-2 px-4 text-sm outline-2 bg-slate-500 placeholder:text-slate-50 focus:bg-slate-800" placeholder="Search..." onChange={(e) => {handleChange(e.target.value)}} />
+        </div>
     )
 };
 
