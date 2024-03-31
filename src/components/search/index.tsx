@@ -39,15 +39,20 @@ const SearchBar = () => {
     const handleChange = (value: string) => {
         const params = new URLSearchParams(searchParams);
         if (value) {
-            params.set("query", value);
+            params.set("q", value);
         } else {
-            params.delete("query");
+            params.delete("q");
         }
         replace(`${pathname}?${params.toString()}`)
     };
     return (
         <div className="w-[90%] mx-auto">
-            <input className="peer block w-full rounded-3xl border border-slate-400 py-2 px-4 text-sm outline-2 bg-slate-500 placeholder:text-slate-50 focus:bg-slate-800" placeholder="Search..." onChange={(e) => {handleChange(e.target.value)}} />
+            <input 
+                className="peer block w-full rounded-3xl border border-slate-400 py-2 px-4 text-sm outline-2 bg-slate-500 placeholder:text-slate-50 focus:bg-slate-800" 
+                placeholder="Search..." 
+                onChange={(e) => {handleChange(e.target.value)}}
+                defaultValue={searchParams.get("q")?.toString()}
+            />
         </div>
     )
 };
