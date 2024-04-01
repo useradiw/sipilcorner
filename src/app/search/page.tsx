@@ -1,6 +1,7 @@
 "use client"
 
 import { SearchBar } from "@/components/search";
+import { useState } from "react";
 import Backbtn from "@/components/control/backbtn";
 import { Suspense } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -54,11 +55,15 @@ const Search = ({
     const query = searchParams?.q || "";
     const currentPage = Number(searchParams?.p) || 1;
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 pt-4">
             <SearchBar />
             <Backbtn />
             <Suspense key={query + currentPage}>
-                <Results query={query}/>
+                {query !== "" ? 
+                    <Results query={query}/>
+                :
+                    null
+                }
             </Suspense>
         </div>
     )
