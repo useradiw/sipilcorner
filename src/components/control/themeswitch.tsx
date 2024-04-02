@@ -28,7 +28,7 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <Switch icon1={lightsun} icon2={darksun} onClick={handleClick} state={theme as string}/>
+    <Switch icon1={lightsun} icon2={darksun} onClick={handleClick} state={theme as string} size={32}/>
   )
 }
 
