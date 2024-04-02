@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Control from "../control";
+import { SearchLink } from "../search";
 
 const Navbar = () => {
     return (
@@ -9,7 +10,8 @@ const Navbar = () => {
                     <div className="font-bold text-2xl">
                         <Link href="/">Sipil Corner</Link>
                     </div>
-                    <div>
+                    <div className="flex flex-row gap-4">
+                        <SearchLink />
                         <Control />
                     </div>
                 </nav>

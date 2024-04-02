@@ -1,3 +1,24 @@
+type searchData = {
+  object: string;
+  id: string;
+  created_time: string;
+  last_edited_time: string;
+  created_by: object;
+  last_edited_by: object;
+  cover: {
+    type: string;
+    external: {
+      url: string;
+    };
+  };
+  icon: object;
+  parent: object;
+  archived: boolean;
+  properties: properties;
+  url: string;
+  public_url: object;
+};
+
 type fetchData = {
   object: string;
   id: string;
