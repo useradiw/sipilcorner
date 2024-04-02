@@ -15,8 +15,8 @@ const Icon = ({ source, alt, classname }: IconProps) => {
     return (
         <Image 
             src={source}
-            width={28}
-            height={28}
+            width={32}
+            height={32}
             alt={alt}
             className={`${classname}`}
         />
@@ -24,15 +24,13 @@ const Icon = ({ source, alt, classname }: IconProps) => {
 };
 
 interface Props {
-    status: "Initial" | "Loading" | "Waiting" | "Success" | "Failed",
+    status: "Loading" | "Success" | "Failed",
 };
 
 const SearchIcon = ({ status }: Props) => {
     switch(status) {
         case "Loading":
             return <Icon source={cog} alt="Loading Icon" classname="motion-safe:animate-spin "/>
-        case "Waiting":
-            return <Icon source={waiting} alt="Waiting Icon" classname="motion-safe:animate-ping"/>
         case "Success":
             return <Icon source={success} alt="Success Icon"/>
         case "Failed":

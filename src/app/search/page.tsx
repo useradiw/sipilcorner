@@ -1,72 +1,61 @@
 "use client"
 
-import { SearchBar } from "@/components/search";
-import { useState } from "react";
-import Backbtn from "@/components/control/backbtn";
+import { Results } from "@/components/search";
 import { Suspense } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { search } from "@/lib/notion-helper";
-import Card from "@/components/display/card";
+import SearchIcon from "@/components/search/searchIcon";
 
 interface Props {
-    query: string;
-}
+    searchParams?: {
+        q?: string,
+        p?: string,
+    },
+};
 
-const Results = ({ query }: Props) => {
+const SearchPage = ({ searchParams }: Props) => {
+    const query = searchParams?.q || "";
+    const currentPage = Number(searchParams?.p) || 1;
+
     const { isLoading, isError, data, error } = useQuery({
         queryKey: ["search", query],
         queryFn: search,
+        enabled: !!query,
     })
 
     if (isLoading) {
         return (
-            <>
-                <div className="w-full bg-slate-600 rounded-md min-h-[45svh] animate-pulse"></div>
-            </>
+            <div className="flex flex-row w-full justify-between">
+                <div>Loading</div>
+                <SearchIcon status="Loading" />
+            </div>
         )
     }
 
-    if (isError) {
+    if (isError || data?.body?.length === 0) {
         return (
-            <div>Error: {error.message}</div>
+            <div className="flex flex-row w-full justify-between">
+                <div>Nothing Found</div>
+                <SearchIcon status="Failed" />
+            </div>
         )
     }
 
     return (
-        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full my-4">
-            {data.body.length >= 0 ? 
-            data.body.map((item: any, i: number) => {
-                return (
-                    <Card key={i} title={item.properties.Title.title[0].text.content} imageSrc={item.cover.external.url} link={`blogs/${item.id}`}/>
-                )
-            })
-            : <div>Try different keywords.</div>}
-        </div>
+        <Suspense key={query + currentPage}>
+            {query !== "" ?
+                <>
+                    <div className="flex flex-row w-full justify-between">
+                        <div>Results</div>
+                        <SearchIcon status="Success" />
+                    </div>
+                    <Results data={data.body} />
+                </>
+            :
+                null
+            }
+        </Suspense>
     )
 };
 
-const Search = ({ 
-    searchParams, 
-}: { 
-    searchParams?: { 
-        q?: string; 
-        p?: string;
-}}) => {
-    const query = searchParams?.q || "";
-    const currentPage = Number(searchParams?.p) || 1;
-    return (
-        <div className="flex flex-col gap-4 pt-4">
-            <SearchBar />
-            <Backbtn />
-            <Suspense key={query + currentPage}>
-                {query !== "" ? 
-                    <Results query={query}/>
-                :
-                    null
-                }
-            </Suspense>
-        </div>
-    )
-};
-
-export default Search;
+export default SearchPage;
