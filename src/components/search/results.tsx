@@ -7,7 +7,7 @@ interface Props {
 const Results = ({ data }: Props) => {
     return (
         <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full my-4">
-            {data.length >= 0 ? 
+            {data?.length >= 0 ? 
             data.map((item: any, i: number) => {
                 return (
                     <Card key={i} title={item.properties.Title.title[0].text.content} imageSrc={item.cover.external.url} link={`blogs/${item.id}`}/>

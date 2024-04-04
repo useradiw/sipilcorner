@@ -8,7 +8,7 @@ import LightSearch from "@/assets/images/lightsearch.svg";
 import DarkSearch from "@/assets/images/darksearch.svg";
 
 const SearchLink = () => {
-    const path = process.env.PUBLIC_BASE ? process.env.PUBLIC_BASE + "/search" : "http://localhost:3000/search";
+    const path = "/search";
     const [mounted, setMounted] = useState<boolean>(false);
     const { theme } = useTheme();
     const router = useRouter();

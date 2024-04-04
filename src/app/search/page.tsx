@@ -1,23 +1,21 @@
 "use client"
 
+import { useSearchParams } from "next/navigation"; //use this for prod instead of searchParams
 import { Results } from "@/components/search";
 import { Suspense } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { search } from "@/lib/notion-helper";
 import SearchIcon from "@/components/search/searchIcon";
 
-interface Props {
-    searchParams?: {
-        q?: string,
-        p?: string,
-    },
+const GetResults = () => {
+    const query = useSearchParams().get("q");
+    return query
 };
 
-const SearchPage = ({ searchParams }: Props) => {
-    const query = searchParams?.q || "";
-    const currentPage = Number(searchParams?.p) || 1;
+const SearchPage = () => {
+    const query = GetResults();
 
-    const { isLoading, isError, data, error } = useQuery({
+    const { isLoading, isError, data } = useQuery({
         queryKey: ["search", query],
         queryFn: search,
         enabled: !!query,
@@ -42,14 +40,14 @@ const SearchPage = ({ searchParams }: Props) => {
     }
 
     return (
-        <Suspense key={query + currentPage}>
-            {query !== "" ?
+        <Suspense key={query}>
+            {query !== "" && data !== undefined ?
                 <>
                     <div className="flex flex-row w-full justify-between">
                         <div>Results</div>
                         <SearchIcon status="Success" />
                     </div>
-                    <Results data={data.body} />
+                    <Results data={data?.body} />
                 </>
             :
                 null
