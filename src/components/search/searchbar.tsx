@@ -2,8 +2,6 @@
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
-export const dynamic = "force-dynamic";
-
 const SearchBar = () => {
     const searchParams = useSearchParams();
     const pathname = usePathname();

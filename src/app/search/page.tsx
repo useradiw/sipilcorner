@@ -7,19 +7,19 @@ import { useQuery } from "@tanstack/react-query";
 import { search } from "@/lib/notion-helper";
 import SearchIcon from "@/components/search/searchIcon";
 
-export const dynamic = "force-dynamic";
+const GetResults = () => {
+    const query = useSearchParams().get("q");
+    return query
+};
 
 const SearchPage = () => {
-    const query = useSearchParams().get("q");
+    const query = GetResults();
 
-    const { isLoading, isError, data, error } = useQuery({
+    const { isLoading, isError, data } = useQuery({
         queryKey: ["search", query],
         queryFn: search,
         enabled: !!query,
     })
-
-    console.log("Query: ", query)
-    console.log(data)
 
     if (isLoading) {
         return (
@@ -41,13 +41,13 @@ const SearchPage = () => {
 
     return (
         <Suspense key={query}>
-            {query !== "" ?
+            {query !== "" && data !== undefined ?
                 <>
                     <div className="flex flex-row w-full justify-between">
                         <div>Results</div>
                         <SearchIcon status="Success" />
                     </div>
-                    <Results data={data.body} />
+                    <Results data={data?.body} />
                 </>
             :
                 null
